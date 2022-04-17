@@ -83,6 +83,13 @@ use store;
 alter table products
 modify created_at datetime on update CURRENT_TIMESTAMP;
 
+alter table users
+modify created_at datetime on update CURRENT_TIMESTAMP;
+
+alter table orders
+modify created_at datetime on update CURRENT_TIMESTAMP;
+
+
 -----------------------
 
 use store;
