@@ -99,5 +99,5 @@ insert into orders values (1,100,'start','13:12:00');
 insert into products values (1,'cake',30,'valid','13:15:00');
 insert into order_product values (1,1,2);
 update countries set code =001 , name ='UAE',continent_name ='asia';
-delete from products; 
+delete from products where id=1; 
 
