@@ -1,0 +1,96 @@
+create database store;
+use store;
+create table countries(
+code int primary key,
+name varchar(20),
+continent_name varchar(20)
+);
+
+use store;
+create table users (
+id int primary key,
+fullname varchar(20),
+email varchar(20),
+gender char(1),
+date_of_birthday varchar(15),
+created_at datetime,
+country_code int
+);
+
+use store;
+create table orders(
+id int primary key,
+user_id int,
+statuss varchar(6),
+created_at datetime
+);
+
+use store;
+create table order_product(
+order_id int,
+product_id int,
+quantity int
+);
+
+use store;
+create table products(
+id int primary key,
+namee varchar(10),
+price int,
+statuss varchar(10),
+created_at datetime
+);
+
+---------------- 
+
+use store;
+alter table countries 
+modify name varchar(20) not null;
+
+use store;
+alter table countries 
+modify continent_name varchar(20) unique;
+
+use store;
+alter table user 
+modify email varchar(20) unique;
+
+use store;
+alter table users 
+add constraint gender check (gender= 'm' or gender= 'f');
+
+use store;
+alter table orders 
+add constraint statuss check (statuss= 'start' or statuss= 'finish');
+
+use store;
+alter table order_product 
+modify quantity int default 0;
+
+use store;
+alter table products 
+modify price int default 0;
+
+use store;
+alter table products 
+modify namee varchar(10) not null;
+
+use store;
+alter table products 
+add constraint statuss check (statuss = 'valid' or statuss ='expired');
+
+use store;
+alter table products
+modify created_at datetime on update CURRENT_TIMESTAMP;
+
+-----------------------
+
+use store;
+insert into countries values (1,'KSA','ASIA');
+insert into users values (1,'Reem Albattah','reem@gmail.com','f','1998-04-27','12:00:00',966);
+insert into orders values (1,100,'start','13:12:00');
+insert into products values (1,'cake',30,'valid','13:15:00');
+insert into order_product values (1,1,2);
+update countries set code =001 , name ='UAE',continent_name ='asia';
+delete from products; 
+
